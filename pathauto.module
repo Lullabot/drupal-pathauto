@@ -25,6 +25,9 @@ use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Url;
+use Drupal\migrate\Plugin\MigrateSourceInterface;
+use Drupal\migrate\Plugin\MigrationInterface;
+use Drupal\migrate\Row;
 use Drupal\pathauto\PathautoFieldItemList;
 use Drupal\pathauto\PathautoItem;
 
@@ -176,4 +179,24 @@ function pathauto_pattern_validate($element, FormStateInterface $form_state) {
 
   return $element;
 
+}
+
+/**
+ * Implements hook_migrate_prepare_row().
+ */
+function pathauto_migrate_prepare_row(
+  Row $row,
+  MigrateSourceInterface $source,
+  MigrationInterface $migration
+) {
+  if (strpos($migration->getPluginId(), 'pathauto_settings') !== FALSE) {
+    // Join together punctuation variables into one array.
+    $punctuation = [];
+    foreach ($row->getSource() as $name => $value) {
+      if (strpos($name, 'pathauto_punctuation_') === 0) {
+        $punctuation[str_replace('pathauto_punctuation_', '', $name)] = $value;
+      }
+    }
+    $row->setSourceProperty('punctuation', $punctuation);
+  }
 }

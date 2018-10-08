@@ -26,8 +26,6 @@ pathauto.settings:
       type: string
     case:
       type: boolean
-    ignore_words:
-      type: string
     update_action:
       type: integer
 

@@ -1,0 +1,64 @@
+id: pathauto_settings
+label: Pahauto configuration
+migration_tags:
+  - Drupal 7
+  - Configuration
+source:
+  plugin: variable
+  variables:
+    - pathauto_punctuation_ampersand
+    - pathauto_punctuation_asterisk
+    - pathauto_punctuation_at
+    - pathauto_punctuation_backtick
+    - pathauto_punctuation_back_slash
+    - pathauto_punctuation_caret
+    - pathauto_punctuation_colon
+    - pathauto_punctuation_comma
+    - pathauto_punctuation_dollar
+    - pathauto_punctuation_double_quotes
+    - pathauto_punctuation_equal
+    - pathauto_punctuation_exclamation
+    - pathauto_punctuation_greater_than
+    - pathauto_punctuation_hash
+    - pathauto_punctuation_hyphen
+    - pathauto_punctuation_left_curly
+    - pathauto_punctuation_left_parenthesis
+    - pathauto_punctuation_left_square
+    - pathauto_punctuation_less_than
+    - pathauto_punctuation_percent
+    - pathauto_punctuation_period
+    - pathauto_punctuation_pipe
+    - pathauto_punctuation_plus
+    - pathauto_punctuation_question_mark
+    - pathauto_punctuation_quotes
+    - pathauto_punctuation_right_curly
+    - pathauto_punctuation_right_parenthesis
+    - pathauto_punctuation_right_square
+    - pathauto_punctuation_semicolon
+    - pathauto_punctuation_slash
+    - pathauto_punctuation_tilde
+    - pathauto_punctuation_underscore
+    - pathauto_verbose
+    - pathauto_separator
+    - pathauto_max_length
+    - pathauto_max_component_length
+    - pathauto_transliterate
+    - pathauto_reduce_ascii
+    - pathauto_ignore_words
+    - pathauto_case
+    - pathauto_update_action
+  source_module: pathauto
+process:
+  punctuation: punctuation
+  verbose: pathauto_verbose
+  separator: pathauto_separator
+  max_length: pathauto_max_length
+  max_component_length: pathauto_max_component_length
+  transliterate: pathauto_transliterate
+  reduce_ascii: pathauto_reduce_ascii
+  ignore_words: pathauto_ignore_words
+  case: pathauto_case
+  update_action: pathauto_update_action
+destination:
+  plugin: config
+  config_name: pathauto.settings
