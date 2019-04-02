@@ -1,5 +1,5 @@
 id: pathauto_settings
-label: Pahauto configuration
+label: Pathauto configuration
 migration_tags:
   - Drupal 7
   - Configuration
